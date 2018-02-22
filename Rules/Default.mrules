@@ -106,6 +106,7 @@ features
 		highway footway : highway=footway
 		highway cycleway : highway=cycleway
 		highway path : highway=path
+		highway cutline: man_made=cutline
 		highway access private : access=private AND highway
 		highway access destination : access=destination AND highway
 		highway steps : highway=steps
@@ -132,7 +133,7 @@ features
 // Routes
 //		route ncn : relation[type=route AND route=bicycle AND network=ncn]
 		route byway : relation[type=route AND route=bicycle AND network="National Byway"]
-		route foot : relation[type=route AND route=foot]
+		route foot : relation[type=route AND (route=foot OR route=hiking)]
 
 	points
 		place city : place=city
@@ -165,7 +166,7 @@ features
 properties
 	map-background-color	: #F1EEE8
 	map-background-opacity	: 1
-	map-sea-color : #B5D0D0
+	map-sea-color : #B5D0FF
 	font-weight : bold
 	font-family : Verdana
 	text-max-width : 7
@@ -311,7 +312,7 @@ rules
 		if : forest
 			define
 				min-zoom : 9
-				fill-color : #8DC56C
+				fill-color : #CFECA8
 		elseif : beach
 			define
 				min-zoom : 10
@@ -329,7 +330,7 @@ rules
 				fill-color : #C5FF5B black 10%
 		elseif : water
 			define
-				fill-color : #B5D0D0
+				fill-color : #B5D0FF
 		elseif:academic
 			define
 				fill-color : #F0F0D8
@@ -340,13 +341,13 @@ rules
 				fill-color : #DCDCDC
 		elseif : grass
 			define
-				fill-color : #CFECA8
+				fill-color : #FFFFFF
 		elseif : allotments
 			define
 				fill-color : #C8B084
 		elseif : meadow
 			define
-				fill-color : #CFECA8
+				fill-color : #FFFFFF
 		elseif : nature reserve
 			define
 				fill-color : #ABDE96
@@ -399,7 +400,7 @@ rules
 				fill-color : #9fd790
 		elseif : farmland
 			define
-				fill-color : #e9d8be
+				fill-color : #FFFFF0
 		elseif : aerodrome
 			define
 				fill-color : #e9e8e3
@@ -547,7 +548,7 @@ rules
 		draw : shape
 	target : powertower
 		define
-			min-zoom: 14
+			min-zoom: 16
 			shape : custom
 			shape-def : m:-1,1;l:1,1,1,-1,-1,-1,-1,1,1,-1;m:-1,-1;l:1,1
 			shape-size : 14:2;20:9
@@ -556,9 +557,10 @@ rules
 
 	target : power_line
 		define
-			min-zoom: 16
+			min-zoom: 15
 			line-width: 1
 			line-color : #5c5c5c white 50%
+			line-style: dashdotdot
 		for : power=line
 			define
 				line-color : #5c5c5c
@@ -655,7 +657,7 @@ rules
 			text-halo-width : 25%
 			text-offset-vertical : 150%
 		draw: text
-
+	
 	target : highway*
 		define
 			font-size : 15:7;18:10
@@ -691,10 +693,10 @@ rules
 					line-width : 7:1;9:2;12:3;13:7;16:10;18:12
 			define
 				min-zoom : 12
-				line-color : #849BBD
+				line-color : #FFE080
 				border-style : solid
-				border-color : #849BBD black 20%
-				border-width : 15%
+				border-color : black
+				border-width : 25%
 			draw : line
 			define
 				min-zoom : 7
@@ -726,7 +728,7 @@ rules
 				line-width : 11:1;13:2;15:10;18:12
 				border-style : solid
 				border-color : #96D296 black 20%
-				border-width : 15%
+				border-width : 25%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -743,7 +745,7 @@ rules
 				line-width : 11:2;12:2;15:10;18:12
 				border-style : solid
 				border-color : #ECA2A3 black 20%
-				border-width : 15%
+				border-width : 25%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -764,7 +766,7 @@ rules
 				line-width : 10:1;11:2;13:2;15:10;18:12
 				border-style : solid
 				border-color : #CAA36F
-				border-width : 5%
+				border-width : 15%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -886,29 +888,32 @@ rules
 		elseif : *track
 			define
 				min-zoom : 12.5
-				line-color : #9D7517
+				line-color : black
 				line-width : 12.5:0.3;13:0.5;15:1;18:1.5
 				line-style : dash
-				border-style : solid
-				border-color : white
-				border-width : 100%
-				border-opacity : 0.3
 			for : tracktype=grade1
 				define
 					line-style : solid
-					line-width : 12.5:0.5;13:1;15:1.5;18:2
+					line-width : 12.5:0.5;13:1;15:1.5;18:3
+					line-color : white
+					border-style : solid
+					border-color: black
+					border-width: 30%
 			for : tracktype=grade2
 				define
-					line-style: dashlong
+					line-style: solid
+					line-color : black
 			for : tracktype=grade3
 				define
 					line-style: dash
 			for : tracktype=grade4
 				define
-					line-style: dashdot
+					min-zoom : 13
+					line-style: dash
 			for : tracktype=grade5
 				define
-					line-style: dashdotdot
+					min-zoom : 14
+					line-style: dash
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -917,16 +922,20 @@ rules
 					border-color : #000
 			draw : line
 			draw : text
+		elseif : *cutline
+			define
+				min-zoom : 12.5
+				line-color : white
+				line-width : 12.5:0.3;13:0.5;15:1;18:1.5
+				line-style : dashlong
+			draw : line
+			draw : text
 		elseif : *footway
 			define
 				min-zoom : 13
-				line-color : #F68474
+				line-color : black
 				line-width : 13:0.5;15:1;18:1.5
 				line-style : dot
-				border-style : solid
-				border-color : white
-				border-width : 100%
-				border-opacity : 0.3
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -959,11 +968,7 @@ rules
 				min-zoom : 13
 				line-color : #6E7C6D
 				line-width : 13:0.5;15:1;18:1.5
-				line-style : dash
-				border-style : solid
-				border-color : white
-				border-width : 100%
-				border-opacity : 0.3
+				line-style : dot
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -1026,44 +1031,44 @@ rules
 
 	target : river
 		define
-			line-color : #B5D0D0
+			line-color : #B5D0FF
 			line-width : 7:1;12:2;14:5
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0D0
+			text-color:#B5D0FF
 			font-weight:normal
 		draw:text
 	target : stream
 		define
-			line-color : #B5D0D0
+			line-color : #B5D0FF
 			line-width : 13:1;15:2
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0D0
+			text-color:#B5D0FF
 			font-weight:normal
 		draw:text
 
 	target : canal
 		define
 			min-zoom : 12
-			line-color : #B5D0D0
+			line-color : #B5D0FF
 			line-width : 12:1;17:8
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0D0
+			text-color:#B5D0FF
 			font-weight:normal
 		draw:text
 
 	target : drain
 		define
 			min-zoom : 13
-			line-color : #B5D0D0
+			line-color : #B5D0FF
 			line-width : 1
 		draw : line
 
@@ -1370,6 +1375,6 @@ rules
 
 	target: coastline
 		define
-			line-color : #B5D0D0
+			line-color : #B5D0FF
 			line-width : 2
 		draw : line
