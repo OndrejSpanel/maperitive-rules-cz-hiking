@@ -1358,7 +1358,16 @@ rules
 			define
 				icon-image : icons/SJJB/png/poi_place_village.glow.32.png
 				min-zoom : 14
+				text: name
+				text-color: #C00000
+				font-size : 9
+				font-weight : bold
+				text-halo-width : 25%
+				text-halo-opacity : 65%
+				text-opacity : 100%
+				text-halo-color : #FFFFFF
 				icon-width : 14:10;17:20
+			draw : text
 		else
 			stop
 		draw : icon
