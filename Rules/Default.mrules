@@ -29,6 +29,7 @@ features
 		mini roundabout : highway=mini_roundabout
 		gate : barrier=gate
 		tourism viewpoint : tourism=viewpoint
+		tourism guidepost : tourism=information AND information=guidepost
 		tourism hotel : tourism=hotel
 		tourism museum : tourism=museum
 		amenity pub : amenity=pub
@@ -1328,6 +1329,8 @@ rules
 			icon-width : 7
 		draw : icon
 
+	target : wegweiser
+		
 	target : tourism*
 		define
 			min-zoom : 17
@@ -1351,6 +1354,11 @@ rules
 				icon-image : icons/SJJB/png/tourist_museum.p.32.png
 				min-zoom : 16
 				icon-width : 16
+		elseif : *guidepost
+			define
+				icon-image : icons/SJJB/png/poi_place_village.glow.32.png
+				min-zoom : 14
+				icon-width : 14:10;17:20
 		else
 			stop
 		draw : icon
