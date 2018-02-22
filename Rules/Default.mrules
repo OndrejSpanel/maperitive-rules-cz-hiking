@@ -471,7 +471,7 @@ rules
 			text-color : #A3A3FE
 		draw : text
 
-	target : boundary*
+	target : boundary country
 		define
 			line-color : #9E1A99
 			line-opacity : 0.5
