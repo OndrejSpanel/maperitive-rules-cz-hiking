@@ -321,7 +321,7 @@ rules
 		define
 			line-style : none
 			line-width : 1
-		if : forest
+		if : forest*
 			define
 				min-zoom : 9
 				fill-color : #C0E0A0
