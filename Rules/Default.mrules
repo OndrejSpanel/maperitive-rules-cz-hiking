@@ -1045,7 +1045,7 @@ rules
 			define
 				min-zoom : 13
 				line-color : #000000
-				line-width : 12.5:0.5;13:1;15:1.5;18:3
+				line-width : 12.5:0.5;13:2;15:2.5;18:3
 				line-style : dot
 			for : tunnel=yes
 				define
