@@ -45,7 +45,10 @@ features
 		building : building=yes
 		water : natural=water OR waterway=riverbank OR landuse=reservoir OR landuse=basin or waterway=dock
 		village green : landuse=village_green
-		forest : landuse=forest OR natural=wood OR natural=scrub
+		forest private : (landuse=forest OR natural=wood) AND access=private
+		forest : landuse=forest OR natural=wood
+		scrub private : natural=scrub AND access=private
+		scrub : natural=scrub
 		farm : landuse=farm
 		farmyard:landuse=farmyard
 		grass : landuse=grass
@@ -55,6 +58,7 @@ features
 		allotments : landuse=allotments
 		academic : node[@isOneOf(amenity, university, college, school)] area[@isOneOf(amenity, university, college, school)]
 		meadow : natural=meadow OR landuse=meadow
+		nature reserve private : leisure=nature_reserve AND access=private
 		nature reserve : leisure=nature_reserve
 		playground : leisure=playground
 		car park: amenity=parking
@@ -321,6 +325,20 @@ rules
 			define
 				min-zoom : 9
 				fill-color : #C0E0A0
+			if : *private
+				define
+					fill-hatch : nwse
+					fill-hatch-color : #C0E0A0
+					fill-color: #C0E0A0 red 25%
+		elseif : scrub*
+			define
+				min-zoom : 9
+				fill-color : #D0E0A0
+			if : *private
+				define
+					fill-hatch : nwse
+					fill-hatch-color : #D0E0A0
+					fill-color: #D0E0A0 red 25%
 		elseif : beach
 			define
 				min-zoom : 10
@@ -356,9 +374,14 @@ rules
 		elseif : meadow
 			define
 				fill-color : #FFFFFF
-		elseif : nature reserve
+		elseif : nature reserve*
 			define
-				fill-color : #ABDE96
+				fill-color : #C0DE96
+			if : *private
+				define
+					fill-hatch-color : #C0DE96
+					fill-color : #C0DE96 red 25%
+					fill-hatch : nwse
 		elseif : car park
 			define
 				fill-color : #F6EEB7
