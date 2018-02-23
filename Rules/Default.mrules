@@ -350,7 +350,7 @@ rules
 		elseif : farmyard
 			define
 				min-zoom : 9
-				fill-color : #DCBE91
+				fill-color : #D0DC50
 		elseif : fell
 			define
 				fill-color : #C5FF5B black 10%
@@ -364,13 +364,13 @@ rules
 				line-style : solid
 		elseif : residential area
 			define
-				fill-color : #DCDCDC
+				fill-color : #D0D0D0
 		elseif : grass
 			define
 				fill-color : #FFFFFF
 		elseif : allotments
 			define
-				fill-color : #C8B084
+				fill-color : #D0DC50
 		elseif : meadow
 			define
 				fill-color : #FFFFFF
@@ -431,7 +431,7 @@ rules
 				fill-color : #9fd790
 		elseif : farmland
 			define
-				fill-color : #FFFFF0
+				fill-color : #FFF8D0
 		elseif : aerodrome
 			define
 				fill-color : #e9e8e3
