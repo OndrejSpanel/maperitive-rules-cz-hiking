@@ -178,7 +178,7 @@ features
 properties
 	map-background-color	: #FFFFFF
 	map-background-opacity	: 1
-	map-sea-color : #B5D0FF
+	map-sea-color : #80B0FF
 	font-weight : bold
 	font-family : Verdana
 	text-max-width : 7
@@ -356,7 +356,7 @@ rules
 				fill-color : #C5FF5B black 10%
 		elseif : water
 			define
-				fill-color : #B5D0FF
+				fill-color : #80B0FF
 		elseif:academic
 			define
 				fill-color : #F0F0D8
@@ -1109,44 +1109,44 @@ rules
 
 	target : river
 		define
-			line-color : #B5D0FF
+			line-color : #80B0FF
 			line-width : 7:1;12:2;14:5
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0FF
+			text-color:#80B0FF
 			font-weight:normal
 		draw:text
 	target : stream
 		define
-			line-color : #B5D0FF
+			line-color : #80B0FF
 			line-width : 13:1;15:2
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0FF
+			text-color:#80B0FF
 			font-weight:normal
 		draw:text
 
 	target : canal
 		define
 			min-zoom : 12
-			line-color : #B5D0FF
+			line-color : #80B0FF
 			line-width : 12:1;17:8
 		draw : line
 		define
 			min-zoom:13
 			font-size:13:8;16:12
-			text-color:#B5D0FF
+			text-color:#80B0FF
 			font-weight:normal
 		draw:text
 
 	target : drain
 		define
 			min-zoom : 13
-			line-color : #B5D0FF
+			line-color : #80B0FF
 			line-width : 1
 		draw : line
 
@@ -1474,6 +1474,6 @@ rules
 
 	target: coastline
 		define
-			line-color : #B5D0FF
+			line-color : #80B0FF
 			line-width : 2
 		draw : line
