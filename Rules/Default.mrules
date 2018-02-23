@@ -45,7 +45,7 @@ features
 		building : building=yes
 		water : natural=water OR waterway=riverbank OR landuse=reservoir OR landuse=basin or waterway=dock
 		village green : landuse=village_green
-		forest : landuse=forest OR natural=wood
+		forest : landuse=forest OR natural=wood OR natural=scrub
 		farm : landuse=farm
 		farmyard:landuse=farmyard
 		grass : landuse=grass
@@ -67,6 +67,7 @@ features
 		leisure stadium : leisure=stadium
 		landuse retail : landuse=retail
 		landuse industrial : landuse=industrial
+		private area : access=private
 		commercial area : landuse=commercial
 		residential area : landuse=residential
 		aeroway apron : aeroway=apron
@@ -85,6 +86,7 @@ features
 		canal : waterway=canal
 		drain : waterway=drain
 		dock : waterway=dock
+		fence : barrier=fence
 		railway rail : railway=rail
 		railway lightrail : railway=light_rail
 		platform : railway=platform OR public_transport=platform
@@ -573,6 +575,20 @@ rules
 				min-zoom : 14
 				line-width: 1
 		draw : line
+		
+	target : fence
+		define
+			min-zoom: 14
+			line-width: 1
+			line-color : #000000
+			line-style: dashdot
+		for : access=private
+			define
+				min-zoom : 12
+				line-color : #FF00000
+				line-width: 2
+		draw : line
+		
 
 	target:aerialway *
 		define
