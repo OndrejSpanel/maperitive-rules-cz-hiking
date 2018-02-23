@@ -325,6 +325,7 @@ rules
 			define
 				min-zoom : 9
 				fill-color : #C0E0A0
+				fill-opacity: 75%
 			if : *private
 				define
 					fill-hatch : nwse
@@ -374,6 +375,7 @@ rules
 		elseif : meadow
 			define
 				fill-color : #FFFFFF
+				fill-opacity : 75%
 		elseif : nature reserve*
 			define
 				fill-color : #C0DE96
