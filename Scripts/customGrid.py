@@ -28,14 +28,15 @@ symbol.style.pen_opacity = 0.5
 grid_box = Map.geo_bounds
 
 # The grid step (in our case it's one second of a degree)
-grid_step = 1.0/60
+grid_step_x = 2.0/60
+grid_step_y = 1.0/60
 
 # Draw horizontal lines
-for y in xfrange (grid_box.min_y, grid_box.max_y, grid_step):
+for y in xfrange (grid_box.min_y, grid_box.max_y, grid_step_y):
 	linestring = LineString([Point(grid_box.min_x, y), Point(grid_box.max_x, y)])
 	symbol.add(linestring)
 
 # Draw vertical lines
-for x in xfrange (grid_box.min_x, grid_box.max_x, grid_step):
+for x in xfrange (grid_box.min_x, grid_box.max_x, grid_step_x):
 	linestring = LineString([Point(x, grid_box.min_y), Point(x, grid_box.max_y)])
 	symbol.add(linestring)
