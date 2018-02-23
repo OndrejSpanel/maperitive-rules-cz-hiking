@@ -85,8 +85,8 @@ features
 		ITM grid : itm_main OR itm_coord_label
 		oneway : oneway=yes OR oneway=true OR oneway=-1
 		coastline : natural=coastline
-		river : waterway=river
-		stream : waterway=stream
+		water river : waterway=river
+		water stream : waterway=stream
 		canal : waterway=canal
 		drain : waterway=drain
 		dock : waterway=dock
@@ -188,7 +188,7 @@ properties
 	text-align-vertical : center
 	font-stretch : 0.9
 	map.rendering.lflp.min-buffer-space : 5
-	map.rendering.lflp.max-allowed-corner-angle : 40
+	map.rendering.lflp.max-allowed-corner-angle : 60
 
 rules
 	target: gps tracks
@@ -1009,7 +1009,6 @@ rules
 				line-width : 12.5:0.3;13:0.5;15:1;18:1.5
 				line-style : dashlong
 			draw : line
-			draw : text
 		elseif : *footway
 			define
 				min-zoom : 13
@@ -1109,26 +1108,18 @@ rules
 
 		define
 
-	target : river
+	target : water*
 		define
 			line-color : #80B0FF
 			line-width : 7:1;12:2;14:5
+		if : *stream
+			define
+				line-width : 13:1;15:2
 		draw : line
 		define
 			min-zoom:13
-			font-size:13:8;16:12
-			text-color:#80B0FF
-			font-weight:normal
-		draw:text
-	target : stream
-		define
-			line-color : #80B0FF
-			line-width : 13:1;15:2
-		draw : line
-		define
-			min-zoom:13
-			font-size:13:8;16:12
-			text-color:#80B0FF
+			font-size:13:10;16:12
+			text-color:#80B0FF black 75%
 			font-weight:normal
 		draw:text
 
