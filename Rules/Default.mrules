@@ -40,7 +40,6 @@ features
 		puffin : crossing_ref=puffin
 		memorial : historic=memorial
 
-
 	areas
 		beach : natural=beach
 		building : building=yes
@@ -78,6 +77,7 @@ features
 		quarry : landuse=quarry
 
 	lines
+		ITM grid : itm_main OR itm_coord_label
 		oneway : oneway=yes OR oneway=true OR oneway=-1
 		coastline : natural=coastline
 		river : waterway=river
@@ -125,8 +125,9 @@ features
 		boundary province : boundary=administrative AND admin_level=6
 		boundary municipal : boundary=administrative AND admin_level=8
 
-		contour major : contour[@isMulti(elevation, 100)]
-		contour minor : contour[@isMulti(elevation, 20) and not @isMulti(elevation, 100)]
+		contour major : contour[@isMulti(elevation, 50)]
+		contour minor : contour[@isMulti(elevation, 10) and not @isMulti(elevation, 50)]
+		contour helper : contour[@isMulti(elevation, 5) and not @isMulti(elevation, 10)]
 
 		gps tracks : gpstrack[]
 		gps routes : gpsroute[]
@@ -1401,8 +1402,8 @@ rules
 
 	target: contour*
 		define
-			line-color : #7f3300
-			line-opacity : 0.35
+			line-color : #C04000
+			line-opacity : 0.45
 			curved : true
 		if : *major
 			define
@@ -1415,10 +1416,15 @@ rules
 				text-halo-width : 35%
 				text-halo-opacity : 1
 				text-halo-color : #F1EEE8
+		elseif : *minor
+			define
+				min-zoom : 13
+				line-width : 1
 		else
 			define
-				min-zoom : 12
+				min-zoom : 14.5
 				line-width : 1
+				line-style: dash
 		draw : contour
 
 	target: coastline
