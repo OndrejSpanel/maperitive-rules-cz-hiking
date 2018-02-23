@@ -1408,7 +1408,7 @@ rules
 
 	target: contour*
 		define
-			line-color : #E04000
+			line-color : #A03000
 			line-opacity : 0.7
 			curved : true
 		if : *major

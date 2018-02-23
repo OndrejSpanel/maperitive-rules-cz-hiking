@@ -23,7 +23,7 @@ layer.add_symbol(symbol)
 
 # Set some styling
 symbol.style.pen_width = 2
-symbol.style.pen_color = Color("black")
+symbol.style.pen_color = Color("red")
 symbol.style.pen_opacity = 0.5
 
 # We are using geometry bounds, but you could set something different yourself.
