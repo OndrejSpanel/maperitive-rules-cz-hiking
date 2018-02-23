@@ -243,6 +243,7 @@ rules
 				font-weight : bold
 				text-max-width : 1000
 				text-align-horizontal : near
+				text-color : black
 
 			if : *city
 				define
@@ -252,34 +253,33 @@ rules
 					placement-value : 1000
 			elseif : *town
 				define
-					font-size : 9:8;12:10;20:20
+					font-size : 9:10;12:16;20:20
 					min-zoom : 9
 					placement-value : 20
 			elseif : *village
 				define
-					font-size : 12:10;20:20
+					font-size : 12:14;20:20
 					min-zoom : 12
 					placement-value : 1
 			elseif : *hamlet
 				define
-					font-size : 14:8;20:16
+					font-size : 14:12;20:16
 					min-zoom : 14
 					placement-value : 0.1
 			elseif : *locality
 				define
-					font-size : 14:8;20:16
+					font-size : 14:10;20:16
 					min-zoom : 14
 					placement-value : 0.1
 			elseif : *isolated_dwelling
 				define
-					font-size : 15:8;20:14
+					font-size : 15:10;20:14
 					min-zoom : 15	
 					placement-value : 0.1
 			elseif : *suburb
 				define
 					font-size : 13:10;20:20
 					min-zoom : 13
-					text-color : white black 50%
 					placement-value : 10
 			draw : text
 		if : aerialway station
@@ -1381,31 +1381,33 @@ rules
 			min-zoom : 17
 			text-color : #2B80FE
 			text-offset-vertical : 150%
-		draw : text
 		if : *hotel
 			define
 				icon-image : icons/SJJB/png/accommodation_hotel2.p.32.png
 				min-zoom : 16
 				icon-width : 16
+			draw : text
 
 		elseif : *viewpoint
 			define
 				icon-image : icons/SJJB/png/tourist_view_point.p.32.png
 				min-zoom : 16
 				icon-width : 16
+			draw : text
 
 		elseif : *museum
 			define
 				icon-image : icons/SJJB/png/tourist_museum.p.32.png
 				min-zoom : 16
 				icon-width : 16
+			draw : text
 		elseif : *guidepost
 			define
 				icon-image : icons/SJJB/png/poi_place_village.glow.32.png
-				min-zoom : 14
+				min-zoom : 13
 				text: name
-				text-color: #C00000
-				font-size : 9
+				text-color: #800000
+				font-size : 11
 				font-weight : bold
 				text-halo-width : 25%
 				text-halo-opacity : 65%
