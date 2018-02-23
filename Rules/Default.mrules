@@ -132,6 +132,7 @@ features
 		gps routes : gpsroute[]
 
 // Routes
+		route czeuro : relation[type=route AND route=hiking AND official_name:cs AND network=iwn]
 		route green : relation[type=route AND kct_green=major]
 		route blue : relation[type=route AND kct_blue=major]
 		route yellow : relation[type=route AND kct_yellow=major]
@@ -668,19 +669,24 @@ rules
 			line-color : #F04040
 			line-width : 11:1;13:2;15:4
 			line-opacity: 90%
-		if : *green
-			define
-				line-color : #20B020
-		if : *blue
-			define
-				line-color : #2020FF
-		if : *yellow
-			define
-				line-color : #E0E020
+		if : *czeuro
+			stop
 		if : *bike
 			define
 				line-color : #C080C0
-				line-opacity: 75%
+				line-opacity: 80%
+		elseif : *green
+			define
+				line-color : #20B020
+		elseif : *blue
+			define
+				line-color : #2020FF
+		elseif : *yellow
+			define
+				line-color : #E0E020
+		elseif : *red
+			define
+				line-color : #FF0000
 		
 		draw : line
 	
