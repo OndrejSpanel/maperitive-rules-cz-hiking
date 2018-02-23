@@ -2,4 +2,4 @@
 
 Example output:
 
-![Image](../blob/master/hut-mapa.png?raw=true)
+![Image](../master/hut-mapa.png?raw=true)
