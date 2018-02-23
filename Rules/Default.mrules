@@ -170,7 +170,7 @@ features
 		gps routepoints: gpsroute[].gpspoint[]
 
 properties
-	map-background-color	: #F1EEE8
+	map-background-color	: #FFFFFF
 	map-background-opacity	: 1
 	map-sea-color : #B5D0FF
 	font-weight : bold
@@ -318,7 +318,7 @@ rules
 		if : forest
 			define
 				min-zoom : 9
-				fill-color : #CFECA8
+				fill-color : #C0E0A0
 		elseif : beach
 			define
 				min-zoom : 10
@@ -609,10 +609,12 @@ rules
 			min-zoom : 13
 			line-style : dashlong
 			line-color : white
-			line-width : 2
+			line-width : 13:1;14:3
+			line-opacity: 100%
 			border-style : solid
-			border-color : gray
-			border-width : 25%
+			border-color : black
+			border-width : 50%
+			border-opacity: 100%
 		draw : line
 		define
 			min-zoom : 6
@@ -638,7 +640,7 @@ rules
 			min-zoom : 13
 			line-width : 13:1;15:2;18:4
 			line-style : dash
-			line-color : #F7D4D4
+			line-color : #FF8080
 		for : access=destination
 			define
 				line-color : lightblue white 50%
@@ -670,24 +672,28 @@ rules
 			line-color : #F04040
 			line-width : 11:1;13:2;15:4
 			line-opacity: 90%
+			line-offset : 14:1.5;15:5;16:5
+			line-offset-sides : left
 		if : *czeuro
 			stop
 		if : *bike
 			define
 				line-color : #C080C0
-				line-opacity: 80%
+				line-offset-sides : right
 		elseif : *green
 			define
-				line-color : #20B020
+				line-color : #00E000
 		elseif : *blue
 			define
-				line-color : #2020FF
+				line-color : #0000E0
 		elseif : *yellow
 			define
-				line-color : #E0E020
+				line-color : #E0E000
 		elseif : *red
 			define
 				line-color : #FF0000
+		else
+			stop
 		
 		draw : line
 	
@@ -757,7 +763,7 @@ rules
 		elseif : *trunk*
 			define
 				min-zoom : 12
-				line-color : #96D296
+				line-color : #96D296 black 50%
 				line-width : 11:1;13:2;15:10;18:12
 				border-style : solid
 				border-color : #96D296 black 20%
@@ -777,7 +783,7 @@ rules
 				line-color : #ECA2A3
 				line-width : 11:2;12:2;15:10;18:12
 				border-style : solid
-				border-color : #ECA2A3 black 20%
+				border-color : #ECA2A3 black 50%
 				border-width : 25%
 			for : tunnel=yes
 				define
@@ -798,7 +804,7 @@ rules
 				line-color : #FDD6A4
 				line-width : 10:1;11:2;13:2;15:10;18:12
 				border-style : solid
-				border-color : #CAA36F
+				border-color : #CAA36F black 50%
 				border-width : 15%
 			for : tunnel=yes
 				define
@@ -823,8 +829,8 @@ rules
 				line-color : #FEFEB2
 				line-width : 10:1;13:2;15:10;18:12
 				border-style : solid
-				border-color : #FEFEB2 black 20%
-				border-width : 15%
+				border-color : #FEFEB2 black 70%
+				border-width : 25%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -848,8 +854,8 @@ rules
 				line-color : white
 				line-width : 12:0.5;13:1;15:3;18:5
 				border-style : solid
-				border-color : #FEFEB2 black 20%
-				border-width : 15%
+				border-color : #FEFEB2 black 50%
+				border-width : 25%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -882,8 +888,8 @@ rules
 				line-color : white
 				line-width : 12:1;13:1.5;15:6;18:15
 				border-style : solid
-				border-color : white black 25%
-				border-width : 15%
+				border-color : black
+				border-width : 30%
 			for : tunnel=yes
 				define
 					border-style : dot
@@ -922,7 +928,7 @@ rules
 			define
 				min-zoom : 12.5
 				line-color : black
-				line-width : 12.5:0.3;13:0.5;15:1;18:1.5
+				line-width : 12.5:0.6;13:1.0;15:2;18:3
 				line-style : dash
 			for : tracktype=grade1
 				define
@@ -1402,14 +1408,14 @@ rules
 
 	target: contour*
 		define
-			line-color : #C04000
-			line-opacity : 0.45
+			line-color : #E04000
+			line-opacity : 0.7
 			curved : true
 		if : *major
 			define
 				map.rendering.contour.label : true
 				min-zoom : 9
-				line-width : 11:0.1;11.9:1;12:2
+				line-width : 9:0.2;11.9:0.7;13:1.1;14.5:2.2
 				font-size : 10
 				font-style : italic
 				font-weight : normal
@@ -1419,11 +1425,11 @@ rules
 		elseif : *minor
 			define
 				min-zoom : 13
-				line-width : 1
+				line-width : 13:0.9;14.5:1.6
 		else
 			define
 				min-zoom : 14.5
-				line-width : 1
+				line-width : 1.5
 				line-style: dash
 		draw : contour
 
