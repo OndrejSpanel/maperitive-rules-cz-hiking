@@ -5,6 +5,8 @@
 
 from maperipy import *
 
+import math
+
 # A helper Python method for ranging with float values
 def xfrange(start, stop, step):
     while start < stop:
@@ -27,16 +29,33 @@ symbol.style.pen_opacity = 0.5
 # We are using geometry bounds, but you could set something different yourself.
 grid_box = Map.geo_bounds
 
-# The grid step (in our case it's one second of a degree)
-grid_step_x = 2.0/60
-grid_step_y = 1.0/60
+avg_x = (grid_box.max_x + grid_box.min_x) * 0.5
+avg_y = (grid_box.max_y + grid_box.min_y) * 0.5
 
-# Draw horizontal lines
-for y in xfrange (grid_box.min_y, grid_box.max_y, grid_step_y):
-	linestring = LineString([Point(grid_box.min_x, y), Point(grid_box.max_x, y)])
-	symbol.add(linestring)
+# Meridian length is always the same - 
+meridian = 20003930.0
+equator = 40075160
+parallel = math.cos(math.radians(avg_y)) * equator
 
-# Draw vertical lines
-for x in xfrange (grid_box.min_x, grid_box.max_x, grid_step_x):
-	linestring = LineString([Point(x, grid_box.min_y), Point(x, grid_box.max_y)])
-	symbol.add(linestring)
+grid_distance = 1000.0
+
+print avg_x, avg_y
+
+grid_step_x = grid_distance / parallel * 360
+grid_step_y = grid_distance / meridian * 180
+
+print grid_step_x, grid_step_y
+
+if (grid_box.delta_x < grid_step_x * 100) & (grid_box.delta_y < grid_step_y * 100):
+	# The grid step (in our case it's one second of a degree)
+
+
+	# Draw horizontal lines
+	for y in xfrange (grid_box.min_y, grid_box.max_y, grid_step_y):
+		linestring = LineString([Point(grid_box.min_x, y), Point(grid_box.max_x, y)])
+		symbol.add(linestring)
+
+	# Draw vertical lines
+	for x in xfrange (grid_box.min_x, grid_box.max_x, grid_step_x):
+		linestring = LineString([Point(x, grid_box.min_y), Point(x, grid_box.max_y)])
+		symbol.add(linestring)
