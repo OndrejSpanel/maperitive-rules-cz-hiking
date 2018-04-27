@@ -1,0 +1,17 @@
+/logs
+/output
+/licenses
+/icons
+/Temp
+/Python
+/Cache
+/Samples
+/docs
+*.dll
+*.backup
+/Maperitive.*
+/tools
+/UserSettings
+/Textures
+/License.txt
+/ReadMe.txt
